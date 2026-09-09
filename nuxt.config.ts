@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/eslint",
   ],
+  css: ["~/assets/css/main.css"],
   eslint: {
     config: {
       standalone: false,
