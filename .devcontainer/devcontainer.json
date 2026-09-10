@@ -1,0 +1,39 @@
+{
+  "name": "Nuxt + Nitro + Postgres Dev Environment",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  // 1. VS Code extensions installed inside the container automatically
+  //"customizations": {
+  //  "vscode": {
+  //    "extensions": [
+  //      "Vue.volar",                      // Vue 3 / Nuxt 3 Language Features
+  //      "drizzle-team.drizzle-studio",    // Drizzle ORM (or "Prisma.prisma" if using Prisma)
+  //     "esbenp.prettier-vscode",         // Code formatting
+  //      "dbaeumer.vscode-eslint",          // Linter
+  //      "eamodio.gitlens"                 // Git insights
+  //    ],
+  //    "settings": {
+  //      "editor.formatOnSave": true,
+  //      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //    }
+  //  }
+  //},
+
+  // 2. Port configuration for local VS Code and GitHub Codespaces
+  "forwardPorts": [3000, 5432],
+  "portsAttributes": {
+    "3000": {
+      "label": "Nuxt / Nitro Server",
+      "onAutoForward": "openBrowser"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "ignore"
+    }
+  },
+
+  // 3. Automated setup steps
+  "postCreateCommand": "npm install"
+}
